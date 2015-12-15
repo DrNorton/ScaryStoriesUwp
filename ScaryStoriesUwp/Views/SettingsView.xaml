@@ -1,0 +1,39 @@
+﻿<views:MvxWindowsPage
+    x:Class="ScaryStoriesUwp.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ScaryStoriesUwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:Cirrious.MvvmCross.WindowsCommon.Views"
+    xmlns:converters="using:ScaryStoriesUwp.Converters"
+    mc:Ignorable="d">
+
+    <views:MvxWindowsPage.Resources>
+        <converters:FontStringConverter x:Key="FontStringConverter"/>
+    </views:MvxWindowsPage.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+     <StackPanel Margin="10" >
+            <TextBlock  Text="Тип шрифта"  />
+            <ComboBox Margin="0,0,0,0"  VerticalAlignment="Stretch" MinWidth="200" ItemsSource="{Binding Fonts}" SelectedItem="{Binding CurrentFont,Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding }"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Margin="0,10,0,0"  Text="Размер шрифта"  />
+            <Slider Minimum="16" Maximum="40" Value="{Binding TextSize,Mode=TwoWay}"/>
+          <TextBlock  Text="Образец текста"  />
+            <Grid Margin="0,5,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Row="1"  MinHeight="200" Fill="#2C434A"/>
+                <TextBlock Grid.Row="1"  FontFamily="{Binding CurrentFont,Mode=TwoWay}" FontSize="{Binding TextSize,Mode=TwoWay}" TextWrapping="Wrap"  Margin="10" Foreground="White" Text="Съешь еще этих мягких французских булок, да выпей чаю. &#x0a;Съешь еще этих мягких французских булок, да выпей чаю."/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</views:MvxWindowsPage>
