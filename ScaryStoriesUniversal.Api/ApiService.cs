@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
+using ScaryStoriesUniversal.Api.CustomApi;
 using ScaryStoriesUniversal.Api.Entities;
 
 namespace ScaryStoriesUniversal.Api
@@ -224,6 +227,15 @@ namespace ScaryStoriesUniversal.Api
             }
         }
 
+
+        public async Task<ApiResult<DatabasePath>> CheckDatabaseUpdate(long version)
+        {
+            var pars = new Dictionary<string, string>();
+            pars.Add("version",version.ToString());
+            var result=await _serviceClient.InvokeApiAsync("LocalDatabase", null, HttpMethod.Get,pars );
+            var database=JsonConvert.DeserializeObject<ApiResult<DatabasePath>>(result.ToString());
+            return database;
+        } 
        
     }
 }

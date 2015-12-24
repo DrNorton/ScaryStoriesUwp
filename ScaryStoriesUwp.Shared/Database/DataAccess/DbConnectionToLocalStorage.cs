@@ -7,20 +7,20 @@ namespace ScaryStoriesUwp.Shared.Database.DataAccess
 {
     public class DbConnectionToLocalStorage : IDbConnection
     {
-        private readonly string _pathtoLocalStorage;
+        private readonly string _pathtoFavoritesStorage;
         private readonly string _pathToLocalStoriesBackup;
 
-        public DbConnectionToLocalStorage(string pathtoLocalStorage,string pathToLocalStoriesBackup)
+        public DbConnectionToLocalStorage(string pathtoFavoritesStorage,string pathToLocalStoriesBackup)
         {
-            _pathtoLocalStorage = pathtoLocalStorage;
+            _pathtoFavoritesStorage = pathtoFavoritesStorage;
             _pathToLocalStoriesBackup = pathToLocalStoriesBackup;
         }
 
         public async Task InitializeDatabases()
         {
-           var conn = GetAsyncConnection(DatabaseType.Favorites);
-           await  conn.CreateTableAsync<FavoriteStory>();
-            var conn2 = GetAsyncConnection(DatabaseType.Backup);
+            var conn = GetAsyncConnection(DatabaseType.Favorites);
+            await  conn.CreateTableAsync<FavoriteStory>();
+            var conn2 = GetAsyncConnection(DatabaseType.Local);
             await conn2.CreateTableAsync<StoryBackupEntity>();
             await conn2.CreateTableAsync<PhotoBackupEntity>();
         }
@@ -29,14 +29,14 @@ namespace ScaryStoriesUwp.Shared.Database.DataAccess
 
         public SQLiteAsyncConnection GetAsyncConnection(DatabaseType type)
         {
-            if (type == DatabaseType.Backup)
+            if (type == DatabaseType.Local)
             {
                 return new SQLiteAsyncConnection(_pathToLocalStoriesBackup,SQLiteOpenFlags.ReadWrite);
             }
 
             if (type == DatabaseType.Favorites)
             {
-                return new SQLiteAsyncConnection(_pathtoLocalStorage);
+                return new SQLiteAsyncConnection(_pathtoFavoritesStorage);
             }
             return null;
         }
@@ -44,7 +44,7 @@ namespace ScaryStoriesUwp.Shared.Database.DataAccess
 
     public enum DatabaseType
     {
-        Backup,
+        Local,
         Favorites
     }
 }

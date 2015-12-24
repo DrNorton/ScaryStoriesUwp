@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Cirrious.MvvmCross.ViewModels;
 using ScaryStoriesUwp.Shared.Services;
 using ScaryStoriesUwp.Shared.Services.Models;
 using ScaryStoriesUwp.Shared.ViewModels.Base;
@@ -12,15 +14,28 @@ namespace ScaryStoriesUwp.Shared.ViewModels
     public class SettingsViewModel:LoadingScreen
     {
         private readonly ISettingsProvider _settingsProvider;
+        private readonly IStoryDatabaseLoader _storyDatabaseLoader;
         private List<string> _fonts;
         private TextInfoSettings _textSettings;
+        public ICommand DownloadLocalDatabaseCommand { get; set; }
 
-        public SettingsViewModel(ISettingsProvider settingsProvider) 
+        public SettingsViewModel(ISettingsProvider settingsProvider,IStoryDatabaseLoader storyDatabaseLoader) 
             : base("Настройки")
         {
             _settingsProvider = settingsProvider;
+            _storyDatabaseLoader = storyDatabaseLoader;
             _textSettings = settingsProvider.TextSettings;
             CreateFontFamilyList();
+            DownloadLocalDatabaseCommand=new MvxCommand(async ()=>await DownloadDatabase());
+        }
+
+        private async Task DownloadDatabase()
+        {
+           
+           var version=await _storyDatabaseLoader.DownloadNewDatabase();
+            _settingsProvider.DatabaseVersion = version;
+            _settingsProvider.IsOffline = true;
+
         }
 
         private void CreateFontFamilyList()

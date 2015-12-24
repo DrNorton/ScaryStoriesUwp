@@ -94,9 +94,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
-    <Content Include="stories.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

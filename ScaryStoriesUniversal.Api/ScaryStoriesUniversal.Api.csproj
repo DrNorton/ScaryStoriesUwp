@@ -37,6 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApiService.cs" />
+    <Compile Include="CustomApi\ApiResult.cs" />
+    <Compile Include="CustomApi\DatabasePath.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\IBaseEntity.cs" />

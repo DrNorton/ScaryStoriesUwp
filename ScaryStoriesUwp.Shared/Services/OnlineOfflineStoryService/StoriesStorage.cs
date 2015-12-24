@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScaryStoriesUniversal.Api;
+using ScaryStoriesUniversal.Api.CustomApi;
 using ScaryStoriesUniversal.Api.Entities;
 using ScaryStoriesUwp.Shared.Database.Repositories.Base;
 
@@ -12,13 +13,13 @@ namespace ScaryStoriesUwp.Shared.Services.OnlineOfflineStoryService
     public class StoriesStorage:IApiService
     {
         private readonly IApiService _apiService;
-        private readonly IStoriesBackupRepository _storiesBackupRepository;
+        private readonly IStoriesLocalRepository _storiesLocalRepository;
         private readonly ISettingsProvider _settingsProvider;
 
-        public StoriesStorage(IApiService apiService,IStoriesBackupRepository storiesBackupRepository,ISettingsProvider settingsProvider)
+        public StoriesStorage(IApiService apiService,IStoriesLocalRepository storiesLocalRepository,ISettingsProvider settingsProvider)
         {
             _apiService = apiService;
-            _storiesBackupRepository = storiesBackupRepository;
+            _storiesLocalRepository = storiesLocalRepository;
             _settingsProvider = settingsProvider;
         }
 
@@ -26,7 +27,7 @@ namespace ScaryStoriesUwp.Shared.Services.OnlineOfflineStoryService
         {
             if (_settingsProvider.IsOffline)
             {
-                return _storiesBackupRepository.GetStories(limit, offset); 
+                return _storiesLocalRepository.GetStories(limit, offset); 
             }
             else
             {
@@ -93,6 +94,11 @@ namespace ScaryStoriesUwp.Shared.Services.OnlineOfflineStoryService
         public Task<IEnumerable<Video>> GetVideosBySourceId(string sourceId, int limit, int offset)
         {
             return _apiService.GetVideosBySourceId(sourceId, limit, offset);
+        }
+
+        public Task<ApiResult<DatabasePath>> CheckDatabaseUpdate(long version)
+        {
+            return _apiService.CheckDatabaseUpdate(version);
         }
     }
 }

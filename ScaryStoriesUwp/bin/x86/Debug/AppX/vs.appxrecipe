@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>3a53f55f-ba6a-4142-bbff-cdb7f21f6d6a</PackageIdentityName>
     <IntermediateOutputPath>E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>28A356084AE859D6567F66316CCF3C4CE67BFFECA8FBCDA961C3DC4E0D43D9D0</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>E6ABB2644C9C62029438E18F0A7DE1FB3F08E049B312F4069C9C04671632C65C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>3a53f55f-ba6a-4142-bbff-cdb7f21f6d6a_1.0.0.0_x86__z355js3b7c6wy</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>3a53f55f-ba6a-4142-bbff-cdb7f21f6d6a_z355js3b7c6wy!App</RegisteredUserModeAppID>
     <RegisteredPackageID>3a53f55f-ba6a-4142-bbff-cdb7f21f6d6a</RegisteredPackageID>
@@ -22,7 +22,7 @@
     <AppXManifest Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-27T19:55:47.987</Modified>
+      <Modified>2015-12-24T00:01:23.432</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +98,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\entrypoint\ScaryStoriesUwp.exe">
       <PackagePath>entrypoint\ScaryStoriesUwp.exe</PackagePath>
-      <Modified>2015-11-27T19:55:44.500</Modified>
+      <Modified>2015-12-23T23:59:34.474</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -142,7 +142,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
-      <Modified>2015-08-08T11:33:14.863</Modified>
+      <Modified>2015-08-11T15:21:10.900</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\Ninject.dll">
       <PackagePath>Ninject.dll</PackagePath>
@@ -154,23 +154,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-11-27T19:55:45.337</Modified>
+      <Modified>2015-12-24T00:01:22.688</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\ScaryStoriesUniversal.Api.dll">
       <PackagePath>ScaryStoriesUniversal.Api.dll</PackagePath>
-      <Modified>2015-11-24T22:14:21.086</Modified>
+      <Modified>2015-12-23T23:34:41.772</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\ScaryStoriesUwp.exe">
       <PackagePath>ScaryStoriesUwp.exe</PackagePath>
-      <Modified>2015-11-27T19:55:47.985</Modified>
+      <Modified>2015-12-24T00:01:23.428</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\ScaryStoriesUwp.Shared.dll">
       <PackagePath>ScaryStoriesUwp.Shared.dll</PackagePath>
-      <Modified>2015-11-27T19:51:09.545</Modified>
+      <Modified>2015-12-23T23:59:31.189</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\ScaryStoriesUwp.xr.xml">
       <PackagePath>ScaryStoriesUwp.xr.xml</PackagePath>
-      <Modified>2015-11-27T19:55:44.151</Modified>
+      <Modified>2015-12-23T23:52:52.739</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\SQLite-net.dll">
       <PackagePath>SQLite-net.dll</PackagePath>
@@ -594,7 +594,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x86\Debug\Core\WinMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2015-10-04T00:31:09.598</Modified>
+      <Modified>2015-12-12T00:39:54.820</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

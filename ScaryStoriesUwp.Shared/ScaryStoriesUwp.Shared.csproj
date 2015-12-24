@@ -49,8 +49,8 @@
     <Compile Include="Database\Entities\StoryBackupEntity.cs" />
     <Compile Include="Database\Repositories\Base\IFavoriteStoriesRepository.cs" />
     <Compile Include="Database\Repositories\FavoriteStoriesRepository.cs" />
-    <Compile Include="Database\Repositories\Base\IStoriesBackupRepository.cs" />
-    <Compile Include="Database\Repositories\StoriesBackupRepository.cs" />
+    <Compile Include="Database\Repositories\Base\IStoriesLocalRepository.cs" />
+    <Compile Include="Database\Repositories\StoriesLocalRepository.cs" />
     <Compile Include="Dependencies\ApiServiceInjectModule.cs" />
     <Compile Include="Dependencies\NinjectMvxIocProvider.cs" />
     <Compile Include="Dependencies\ViewModelRegisterModule.cs" />
@@ -99,6 +99,10 @@
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.5.1\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">

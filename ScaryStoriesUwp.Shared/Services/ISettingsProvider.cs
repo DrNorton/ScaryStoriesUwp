@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,5 +12,8 @@ namespace ScaryStoriesUwp.Shared.Services
     {
         TextInfoSettings TextSettings { get; set; }
         bool IsOffline { get; set; }
+
+        long DatabaseVersion { get; set; }
+        event PropertyChangedEventHandler PropertyChanged;
     }
 }

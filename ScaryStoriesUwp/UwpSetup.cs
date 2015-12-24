@@ -42,6 +42,8 @@ namespace ScaryStoriesUwp
         {
             Mvx.RegisterType<IMessageProvider, MessageProvider>();
             Mvx.ConstructAndRegisterSingleton<ISettingsProvider,SettingsProvider>();
+            var settingsProvider = Mvx.Resolve<ISettingsProvider>();
+            settingsProvider.IsOffline = false;
             Mvx.ConstructAndRegisterSingleton<ISpeechSyntizerService, SpeechSyntizerService>();
             Mvx.RegisterType<IStoryDatabaseLoader, StoryDatabaseLoader>();
             Mvx.RegisterSingleton(typeof(IGlobalProgressProvider),new GlobalProgressProvider());

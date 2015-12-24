@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using ScaryStoriesUwp.Annotations;
 using ScaryStoriesUwp.Shared.Services;
 using ScaryStoriesUwp.Shared.Services.Models;
 
 namespace ScaryStoriesUwp.ServicesImpl
 {
-    public class SettingsProvider : ISettingsProvider
+    public class SettingsProvider : ISettingsProvider,INotifyPropertyChanged
     {
         private ApplicationDataContainer _roamingSettings;
+        
 
         public SettingsProvider()
         {
@@ -24,6 +28,21 @@ namespace ScaryStoriesUwp.ServicesImpl
             set
             {
                 StorageHelper.SetCompositeSetting<bool>("IsOffline", value);
+                OnPropertyChanged();
+            }
+        }
+
+        public long DatabaseVersion
+        {
+            get
+            {
+                var settings = StorageHelper.GetCompositeSetting<long>("DbVersion", 0);
+              
+                return settings;
+            }
+            set
+            {
+                StorageHelper.SetCompositeSetting<long>("DbVersion", value);
             }
         }
 
@@ -52,6 +71,14 @@ namespace ScaryStoriesUwp.ServicesImpl
         private TextInfoSettings CreateDefaultSettings()
         {
             return new TextInfoSettings() {Font = "Segoe UI",LineHeight = 27,Size = 20};
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

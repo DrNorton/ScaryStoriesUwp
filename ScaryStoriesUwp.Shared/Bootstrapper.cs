@@ -25,8 +25,6 @@ namespace ScaryStoriesUwp.Shared
             CreateMenu();
         }
 
-        
-
         private void CreateMenu()
         {
             Mvx.RegisterSingleton(typeof(MenuConstructor), new MenuConstructor());
@@ -39,11 +37,13 @@ namespace ScaryStoriesUwp.Shared
 
         private void InitLocalStore()
         {
-            var dbConnection = new DbConnectionToLocalStorage("localstore.db","stories.db");
+            var settingsProvider=Mvx.Resolve<ISettingsProvider>();
+         
+            var dbConnection = new DbConnectionToLocalStorage("localstore.db",String.Format("{0}_localdatabase.db", settingsProvider.DatabaseVersion));
             Mvx.RegisterSingleton(typeof(IDbConnection), dbConnection);
     
             Mvx.RegisterType<Database.Repositories.Base.IFavoriteStoriesRepository, FavoriteStoriesRepository>();
-            Mvx.RegisterType<Database.Repositories.Base.IStoriesBackupRepository, StoriesBackupRepository>();
+            Mvx.RegisterType<Database.Repositories.Base.IStoriesLocalRepository, StoriesLocalRepository>();
 
         }
         private void RegisterServices()

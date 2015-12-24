@@ -14,7 +14,14 @@
     </views:MvxWindowsPage.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-     <StackPanel Margin="10" >
+       <Grid.RowDefinitions>
+           <RowDefinition Height="Auto"/>
+           <RowDefinition/>
+       </Grid.RowDefinitions>
+        <StackPanel Padding="10">
+            <Button Command="{Binding DownloadLocalDatabaseCommand}" Content="Скачать локальную базу данных"/>
+        </StackPanel>
+     <StackPanel Margin="10" Grid.Row="1" >
             <TextBlock  Text="Тип шрифта"  />
             <ComboBox Margin="0,0,0,0"  VerticalAlignment="Stretch" MinWidth="200" ItemsSource="{Binding Fonts}" SelectedItem="{Binding CurrentFont,Mode=TwoWay}">
                 <ComboBox.ItemTemplate>

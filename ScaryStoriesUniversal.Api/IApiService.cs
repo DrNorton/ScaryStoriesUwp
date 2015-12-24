@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
+using ScaryStoriesUniversal.Api.CustomApi;
 using ScaryStoriesUniversal.Api.Entities;
 
 namespace ScaryStoriesUniversal.Api
@@ -22,5 +23,6 @@ namespace ScaryStoriesUniversal.Api
         Task<Video> GetVideo(string videoId);
         Task<Source> GetSource(string sourceId);
         Task<IEnumerable<Video>> GetVideosBySourceId(string sourceId, int limit, int offset);
+        Task<ApiResult<DatabasePath>> CheckDatabaseUpdate(long version);
     }
 }

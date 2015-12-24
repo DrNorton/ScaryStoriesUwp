@@ -33,17 +33,18 @@ namespace ScaryStoriesUwp.Shared.ViewModels
             _idsContainer = idsContainer;
            _storyDatabaseLoader = storyDatabaseLoader;
             _loadedStoriesIds=new List<string>();
-            CreateTables();
+
+         
             Load();
         }
 
-        private async void CreateTables()
+        private async Task CreateTables()
         {
             try
             {
-                await _storyDatabaseLoader.CopyDatabase();
+
+            
                 await Mvx.Resolve<IDbConnection>().InitializeDatabases();
-               
             }
             catch (Exception e)
             {
@@ -73,7 +74,10 @@ namespace ScaryStoriesUwp.Shared.ViewModels
 
         private async void Load()
         {
-          
+           // await CreateTables();
+
+
+
         }
 
         public async Task<IEnumerable<Story>> LoadMoreItemsOverrideAsync(CancellationToken c, uint count)

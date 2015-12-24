@@ -12,12 +12,13 @@
     <RootPropertyPathName Name="CurrentFont" />
     <RootPropertyPathName Name="TextSize" />
     <RootPropertyPathName Name="Fonts" />
+    <RootPropertyPathName Name="DownloadLocalDatabaseCommand" />
     <RootPropertyPathName Name="Background" />
     <RootPropertyPathName Name="Label" />
     <RootPropertyPathName Name="SymbolAsChar" />
     <RootPropertyPathName Name="SelectedItem" />
     <RootPropertyPathName Name="IsPaneOpen" />
-    <RootPropertyPathName Name="BackStoryCommand" />
+    <RootPropertyPathName Name="IsOffline" />
     <RootPropertyPathName Name="AppFrame" />
     <RootPropertyPathName Name="CanGoBack" />
     <RootPropertyPathName Name="ItemsPanelRoot" />
@@ -29,6 +30,7 @@
     <RootPropertyPathName Name="ToFavoriteButtonVisible" />
     <RootPropertyPathName Name="DeleteFromFavoriteCommand" />
     <RootPropertyPathName Name="DeleteFromFavoriteButtonVisible" />
+    <RootPropertyPathName Name="BackStoryCommand" />
     <RootPropertyPathName Name="SyntheseCommand" />
     <RootPropertyPathName Name="IsPlaying" />
     <RootPropertyPathName Name="PauseCommand" />
@@ -59,6 +61,8 @@
       <RootProperty Name="Background" />
       <RootProperty Name="Style" />
       <RootProperty Name="IsChecked" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="ContentTemplate" />
       <RootEvent Name="Unchecked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
@@ -112,6 +116,8 @@
       <RootProperty Name="LineHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Command" />
+      <RootProperty Name="Content" />
       <RootProperty Name="TabIndex" />
       <RootProperty Name="Style" />
       <RootProperty Name="IsEnabled" />
@@ -286,8 +292,9 @@
     <RootType FullName="ScaryStoriesUwp.Views.MainView" />
     <RootType FullName="ScaryStoriesUwp.Converters.FontStringConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Margin" />
+      <RootProperty Name="Padding" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Orientation" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
@@ -346,21 +353,6 @@
       <RootEvent Name="ContainerContentChanging" />
       <RootEvent Name="ItemInvoked" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="Background" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="PrimaryCommands" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="SecondaryCommands" />
-      <RootProperty Name="Content" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Background" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Visibility" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
@@ -384,6 +376,18 @@
       <RootProperty Name="Stroke" />
       <RootProperty Name="Fill" />
       <RootProperty Name="Name" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="Background" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="SecondaryCommands" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Command" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MediaElement">
       <RootEvent Name="MediaOpened" />

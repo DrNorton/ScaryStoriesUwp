@@ -134,10 +134,17 @@
                                 <TextBlock FontSize="15" VerticalAlignment="Center" x:Name="ProgressText"/>
                                 <ProgressRing VerticalAlignment="Center" x:Name="ProgressRing" Margin="10,0,5,0"  Foreground="#0f5757"/>
                             </StackPanel>
-                            
-                            <CommandBar  Background="#2b2b2b" Grid.Column="3" VerticalAlignment="Center">
-                                <AppBarButton Background="#2b2b2b" Command="{Binding BackStoryCommand}" Label="Онлайн" Icon="Globe" />
-                            </CommandBar>
+
+                            <ToggleButton Grid.Column="3" VerticalAlignment="Center"  IsChecked="{Binding IsOffline,Mode=TwoWay}">
+                                <ToggleButton.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <FontIcon Glyph="&#xE774;"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ToggleButton.ContentTemplate>
+                            </ToggleButton>
+                        
                         </Grid>
                     </Border>
                 </Grid>
