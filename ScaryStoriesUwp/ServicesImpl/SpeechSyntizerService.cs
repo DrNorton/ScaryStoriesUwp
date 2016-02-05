@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Cirrious.CrossCore.UI;
-using ScaryStoriesUniversal.Api.Entities;
 using ScaryStoriesUwp.Shared.Services;
 using ScaryStoriesUwp.Shared.Services.Models;
 

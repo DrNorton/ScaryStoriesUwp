@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Cirrious.CrossCore.UI;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform.UI;
 using ScaryStoriesUniversal.Api;
 using ScaryStoriesUniversal.Api.Entities;
 using ScaryStoriesUwp.Shared.Database.Entities;

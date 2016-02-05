@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
 using Windows.UI.Xaml.Controls;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Platform;
-using Cirrious.MvvmCross.ViewModels;
-using Cirrious.MvvmCross.WindowsCommon.Platform;
+
+using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
+using MvvmCross.Platform.IoC;
+using MvvmCross.Platform.Platform;
+using MvvmCross.WindowsUWP.Platform;
 using ScaryStoriesUwp.ServicesImpl;
 using ScaryStoriesUwp.Shared;
 using ScaryStoriesUwp.Shared.Dependencies;
 using ScaryStoriesUwp.Shared.Services;
-using ScaryStoriesUwp.Shared.ViewModels;
-using ScaryStoriesUwp.Shared.ViewModels.Shell;
-using ScaryStoriesUwp.Views;
 
 namespace ScaryStoriesUwp
 {
@@ -50,7 +43,7 @@ namespace ScaryStoriesUwp
         }
 
 
-        protected override Cirrious.CrossCore.IoC.IMvxIoCProvider CreateIocProvider()
+        protected override IMvxIoCProvider CreateIocProvider()
         {
             return new NinjectMvxIocProvider();
         }

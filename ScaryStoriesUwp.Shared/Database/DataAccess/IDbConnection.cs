@@ -5,7 +5,8 @@ namespace ScaryStoriesUwp.Shared.Database.DataAccess
 {
     public interface IDbConnection
     {
-        Task InitializeDatabases();
+        Task InitializeLocalDatabase();
         SQLiteAsyncConnection GetAsyncConnection(DatabaseType type);
+        Task InitFavoritesTables();
     }
 }

@@ -5,9 +5,10 @@
     xmlns:local="using:ScaryStoriesUwp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="using:Cirrious.MvvmCross.WindowsCommon.Views"
+    
     xmlns:converters="using:ScaryStoriesUwp.Converters"
     xmlns:playback="using:Microsoft.PlayerFramework"
+    xmlns:views="using:MvvmCross.WindowsUWP.Views"
     mc:Ignorable="d">
     <views:MvxWindowsPage.Resources>
         <converters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>

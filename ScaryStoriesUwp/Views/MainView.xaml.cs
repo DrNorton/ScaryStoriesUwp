@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
-using Cirrious.CrossCore;
-using Cirrious.MvvmCross.WindowsCommon.Views;
+using MvvmCross.WindowsUWP.Views;
 using ScaryStoriesUniversal.Api.Entities;
 using ScaryStoriesUwp.Annotations;
 using ScaryStoriesUwp.Helpers;

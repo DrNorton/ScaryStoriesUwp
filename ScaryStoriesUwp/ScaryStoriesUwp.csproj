@@ -207,7 +207,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml.UWP, Version=3.0.0.1">
+    <SDKReference Include="Microsoft.PlayerFramework.Xaml.UWP, Version=3.0.0.4">
       <Name>Microsoft Player Framework</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs.120, Version=14.0">

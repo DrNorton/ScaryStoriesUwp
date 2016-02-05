@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Core.ViewModels;
 using ScaryStoriesUwp.Shared.Services;
 using ScaryStoriesUwp.Shared.Services.Models;
 using ScaryStoriesUwp.Shared.ViewModels.Base;

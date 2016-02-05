@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ScaryStoriesUwp.Shared.Database.Entities;
 using ScaryStoriesUwp.Shared.Database.Repositories.Base;

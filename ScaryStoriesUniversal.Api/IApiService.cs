@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.MobileServices;
 using ScaryStoriesUniversal.Api.CustomApi;
 using ScaryStoriesUniversal.Api.Entities;
 

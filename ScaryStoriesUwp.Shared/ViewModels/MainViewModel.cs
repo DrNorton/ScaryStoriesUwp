@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Cirrious.CrossCore;
+using MvvmCross.Platform;
 using ScaryStoriesUniversal.Api;
 using ScaryStoriesUniversal.Api.Entities;
 using ScaryStoriesUwp.Shared.Database.DataAccess;
-using ScaryStoriesUwp.Shared.Database.Repositories;
-using ScaryStoriesUwp.Shared.Database.Repositories.Base;
 using ScaryStoriesUwp.Shared.Services;
 using ScaryStoriesUwp.Shared.ViewModels.Base;
 
@@ -33,24 +30,12 @@ namespace ScaryStoriesUwp.Shared.ViewModels
             _idsContainer = idsContainer;
            _storyDatabaseLoader = storyDatabaseLoader;
             _loadedStoriesIds=new List<string>();
-
-         
             Load();
         }
 
         private async Task CreateTables()
         {
-            try
-            {
-
-            
-                await Mvx.Resolve<IDbConnection>().InitializeDatabases();
-            }
-            catch (Exception e)
-            {
-                
-            }
-
+            await Mvx.Resolve<IDbConnection>().InitFavoritesTables();
         }
 
 
@@ -74,10 +59,7 @@ namespace ScaryStoriesUwp.Shared.ViewModels
 
         private async void Load()
         {
-           // await CreateTables();
-
-
-
+            await CreateTables();
         }
 
         public async Task<IEnumerable<Story>> LoadMoreItemsOverrideAsync(CancellationToken c, uint count)

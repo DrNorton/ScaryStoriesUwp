@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.WindowsAzure.MobileServices;
-
-namespace ScaryStoriesUniversal.Api.Entities
+﻿namespace ScaryStoriesUniversal.Api.Entities
 {
     public class Story:BaseEntity
     {

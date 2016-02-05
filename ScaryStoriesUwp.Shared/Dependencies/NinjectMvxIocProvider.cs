@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using Cirrious.CrossCore.Core;
-using Cirrious.CrossCore.IoC;
+using MvvmCross.Platform.Core;
+using MvvmCross.Platform.IoC;
 using Ninject;
 using Ninject.Modules;
 

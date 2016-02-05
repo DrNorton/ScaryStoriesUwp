@@ -242,7 +242,7 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontFamily" />
     </RootType>
-    <RootType FullName="Cirrious.MvvmCross.WindowsCommon.Views.MvxWindowsPage">
+    <RootType FullName="MvvmCross.WindowsUWP.Views.MvxWindowsPage">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />

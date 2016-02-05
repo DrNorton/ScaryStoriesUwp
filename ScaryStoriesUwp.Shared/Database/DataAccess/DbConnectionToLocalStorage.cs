@@ -16,13 +16,18 @@ namespace ScaryStoriesUwp.Shared.Database.DataAccess
             _pathToLocalStoriesBackup = pathToLocalStoriesBackup;
         }
 
-        public async Task InitializeDatabases()
+        public async Task InitializeLocalDatabase()
         {
-            var conn = GetAsyncConnection(DatabaseType.Favorites);
-            await  conn.CreateTableAsync<FavoriteStory>();
+           
             var conn2 = GetAsyncConnection(DatabaseType.Local);
             await conn2.CreateTableAsync<StoryBackupEntity>();
             await conn2.CreateTableAsync<PhotoBackupEntity>();
+        }
+
+        public async Task InitFavoritesTables()
+        {
+            var conn = GetAsyncConnection(DatabaseType.Favorites);
+            await conn.CreateTableAsync<FavoriteStory>();
         }
 
 

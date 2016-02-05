@@ -4,10 +4,10 @@
     "Microsoft.Bcl.Build": "1.0.21",
     "Microsoft.Net.Http": "2.2.29",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "MvvmCross": "3.5.1",
-    "Newtonsoft.Json": "7.0.1",
+    "MvvmCross": "4.0.0",
+    "Newtonsoft.Json": "8.0.2",
     "Portable.Ninject": "3.3.1",
-    "SQLitePCL.raw_basic": "0.8.2",
+    "SQLitePCL.raw_basic": "0.8.6",
     "WindowsAzure.MobileServices": "1.3.2"
   },
   "frameworks": {
