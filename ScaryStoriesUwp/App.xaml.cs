@@ -4,6 +4,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.ApplicationInsights;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using ScaryStoriesUwp.Views.Shell;
@@ -23,6 +24,7 @@ namespace ScaryStoriesUwp
         /// </summary>
         public App()
         {
+            WindowsAppInitializer.InitializeAsync();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -34,14 +36,10 @@ namespace ScaryStoriesUwp
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-
             this.shell = Window.Current.Content as ShellView;
             Frame rootFrame = null;
-
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-
             if (rootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
@@ -57,8 +55,6 @@ namespace ScaryStoriesUwp
                 }
             }
 
-
-
             if (rootFrame.Content == null)
             {
                 // When the navigation stack isn't restored navigate to the first page,
@@ -71,20 +67,17 @@ namespace ScaryStoriesUwp
                 start.Start();
             }
 
-
             if (this.shell == null)
             {
                 // create new shell
                 this.shell = new ShellView(rootFrame);
             }
-
-
             // Place the shell with frame as content in the current Window
-
             Window.Current.Content = shell;
-
             // Ensure the current window is active
             Window.Current.Activate();
+            var telemetry = Mvx.Resolve<TelemetryClient>();
+            Mvx.Resolve<TelemetryClient>().TrackEvent("AppStarts");
         }
 
         /// <summary>

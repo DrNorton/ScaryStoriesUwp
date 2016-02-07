@@ -1,0 +1,2 @@
+MainPackage=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\x64\Release\Upload\ScaryStoriesUwp_2.1.1.0_x64.appx
+SymbolPackage=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\AppPackages\ScaryStoriesUwp_2.1.1.0\ScaryStoriesUwp_2.1.1.0_x64.appxsym

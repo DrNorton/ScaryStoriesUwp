@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using System.Threading.Tasks;
+using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.Web.Http;
 using ScaryStoriesUniversal.Api;
@@ -16,22 +20,22 @@ namespace ScaryStoriesUwp.ServicesImpl
         private readonly IApiService _apiService;
         private readonly ISettingsProvider _settingsProvider;
         private readonly IMessageProvider _messageProvider;
+        private BackgroundDownloader _backgroundDownloader;
+       private DownloadOperation downloadOperation;
+        private IProgressDownloadReceiver _progressDownloadReceiver;
+
 
         public StoryDatabaseLoader(IApiService apiService,ISettingsProvider settingsProvider,IMessageProvider messageProvider)
         {
             _apiService = apiService;
             _settingsProvider = settingsProvider;
             _messageProvider = messageProvider;
+            _backgroundDownloader = new BackgroundDownloader();
         }
 
-        public async Task<bool> IsDatabaseDownloaded()
+        public async Task<long> DownloadNewDatabase(CancellationToken cancellationToken, IProgressDownloadReceiver progressDownloadReceiver)
         {
-            var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("stories.db");
-            return item != null;
-        }
-
-        public async Task<long> DownloadNewDatabase()
-        {
+            _progressDownloadReceiver = progressDownloadReceiver;
             var updateResult=await _apiService.CheckDatabaseUpdate(_settingsProvider.DatabaseVersion);
             if (updateResult.ErrorCode != 0)
             {
@@ -41,33 +45,75 @@ namespace ScaryStoriesUwp.ServicesImpl
             else
             {
                 var newDatabase=updateResult.Result;
-                await Download(newDatabase.PathToDatabase,newDatabase.DbVersion);
+                Download(new Uri(newDatabase.PathToDatabase,UriKind.RelativeOrAbsolute),newDatabase.DbVersion.ToString(),cancellationToken);
                 return newDatabase.DbVersion;
             }
         }
 
-        public async Task Download(string url,long version)
+        public async void Download(Uri durl,string version, CancellationToken cancellationToken)
         {
-            using (var httpClient = new HttpClient())
-            {
-                var result=await httpClient.GetBufferAsync(new Uri(url, UriKind.RelativeOrAbsolute));
-                SaveToIsolatedStorage(version.ToString(), result);
-            }
-        }
+            var storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            StorageFile file = await storageFolder.CreateFileAsync(String.Format("{0}_localdatabase.db", version), CreationCollisionOption.GenerateUniqueName);
+            downloadOperation = _backgroundDownloader.CreateDownload(durl, file);
+            _progressDownloadReceiver.DownloadStart();
 
-        private static void SaveToIsolatedStorage(string version, IBuffer result)
-        {
-            //Создаём папку
-           using (var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-               
-
-                using (var isolatedStorageFileStream = new IsolatedStorageFileStream(String.Format("{0}_localdatabase.db",version), FileMode.Create, isolatedStorageFile))
+            Progress<DownloadOperation> progress = new Progress<DownloadOperation>(ProgressChanged);
+                try
                 {
-                    result.AsStream().CopyTo(isolatedStorageFileStream);
+                    await downloadOperation.StartAsync().AsTask(cancellationToken, progress);
                 }
+                catch (TaskCanceledException)
+                {
+                    downloadOperation.ResultFile.DeleteAsync();
+                    downloadOperation = null;
+                }
+            
+        }
+
+        private void ProgressChanged(DownloadOperation downloadOperation)
+        {
+            int progress =
+                (int)
+                    (100*
+                     ((double) downloadOperation.Progress.BytesReceived/
+                      (double) downloadOperation.Progress.TotalBytesToReceive));
+            Debug.WriteLine(downloadOperation.Progress.Status);
+            switch (downloadOperation.Progress.Status)
+            {
+                
+                case BackgroundTransferStatus.Running:
+                    {
+                 
+                        break;
+                    }
+                case BackgroundTransferStatus.PausedByApplication:
+                    {
+                        break;
+                    }
+                case BackgroundTransferStatus.PausedCostedNetwork:
+                    {
+                        break;
+                    }
+                case BackgroundTransferStatus.PausedNoNetwork:
+                    {
+                        break;
+                    }
+                case BackgroundTransferStatus.Error:
+                    {
+                     _progressDownloadReceiver.DownloadErrorFinish();
+                        break;
+                    }
+            }
+            _progressDownloadReceiver.DownloadProgressChange(progress);
+            if (progress >= 100)
+            {
+                downloadOperation = null;
+                _progressDownloadReceiver.DownloadFinish();
+                _progressDownloadReceiver = null;
             }
         }
+
+      
 
        
     }

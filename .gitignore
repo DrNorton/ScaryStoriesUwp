@@ -179,3 +179,6 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 packages
+/ScaryStoriesUniversal.Api/bin
+/ScaryStoriesUwp/bin
+/ScaryStoriesUwp.Shared/bin

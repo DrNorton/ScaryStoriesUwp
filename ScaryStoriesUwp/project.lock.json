@@ -3,6 +3,37 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -1651,6 +1682,37 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -3389,6 +3451,37 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -5099,6 +5192,37 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -6842,6 +6966,37 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -8552,6 +8707,37 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -10295,6 +10481,37 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+        "dependencies": {
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
+        },
+        "compile": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -12006,6 +12223,58 @@
     }
   },
   "libraries": {
+    "Microsoft.ApplicationInsights/1.2.3": {
+      "sha512": "a34atobxpucCTTX9VCD7aIu6Ydzry+Va7TxK2tTQcfaMvefGW4kUKtg9GHKIn19IaXe+A4oZt/GBqsOt5vQrBA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net40/Microsoft.ApplicationInsights.dll",
+        "lib/net40/Microsoft.ApplicationInsights.XML",
+        "lib/net45/Microsoft.ApplicationInsights.dll",
+        "lib/net45/Microsoft.ApplicationInsights.XML",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.XML",
+        "lib/wp8/Microsoft.ApplicationInsights.dll",
+        "lib/wp8/Microsoft.ApplicationInsights.XML",
+        "Microsoft.ApplicationInsights.nuspec",
+        "package/services/metadata/core-properties/3b36eef276524f5d883c618d5fd8c500.psmdcp"
+      ]
+    },
+    "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+      "sha512": "5MGcvPQVaGlGyAVh9adg4sSkIVSYDKn+H3+YnZa9hi1gH/g6UsRt4HLc8vp/IxjlbmXbJyAB7dYJV/NHmAGAgA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net40/Microsoft.ApplicationInsights.PersistenceChannel.dll",
+        "lib/net40/Microsoft.ApplicationInsights.PersistenceChannel.XML",
+        "lib/net45/Microsoft.ApplicationInsights.PersistenceChannel.dll",
+        "lib/net45/Microsoft.ApplicationInsights.PersistenceChannel.XML",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.XML",
+        "lib/wp8/Microsoft.ApplicationInsights.PersistenceChannel.dll",
+        "lib/wp8/Microsoft.ApplicationInsights.PersistenceChannel.XML",
+        "Microsoft.ApplicationInsights.PersistenceChannel.nuspec",
+        "package/services/metadata/core-properties/f973733421c14c3594986b3f2c22213a.psmdcp"
+      ]
+    },
+    "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+      "sha512": "Orj0UQrjQ2z0aWZZoexl734Ge7Q4oVev3VFSsk6t8l2kImrfJ1eygkJWtQ1d7u0kF6MLLrvUvsMSxo+0rgPiMQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll",
+        "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.XML",
+        "lib/wp8/Microsoft.ApplicationInsights.Extensibility.Windows.dll",
+        "lib/wp8/Microsoft.ApplicationInsights.Extensibility.Windows.XML",
+        "lib/wpa81/Microsoft.ApplicationInsights.Extensibility.Windows.dll",
+        "lib/wpa81/Microsoft.ApplicationInsights.Extensibility.Windows.XML",
+        "Microsoft.ApplicationInsights.WindowsApps.nuspec",
+        "package/services/metadata/core-properties/8265b8c93c244c80b4e8bce27f31849d.psmdcp"
+      ]
+    },
     "Microsoft.Bcl/1.1.10": {
       "sha512": "+tTqoh/M1pyL8El3qLy30EcwnAtyvFoDZJtdG9Cbg/WdFbh4N8kyrq198XHuEL7lnJbeD0DRO8jcX5IIOh05cQ==",
       "type": "Package",
@@ -15859,6 +16128,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.ApplicationInsights.WindowsApps >= 1.1.1",
       "Microsoft.Bcl >= 1.1.10",
       "Microsoft.Bcl.Build >= 1.0.21",
       "Microsoft.Net.Http >= 2.2.29",

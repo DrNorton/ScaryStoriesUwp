@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmCross.Core.ViewModels;
@@ -8,13 +9,18 @@ using ScaryStoriesUwp.Shared.ViewModels.Base;
 
 namespace ScaryStoriesUwp.Shared.ViewModels
 {
-    public class SettingsViewModel:LoadingScreen
+    public class SettingsViewModel:LoadingScreen, IProgressDownloadReceiver
     {
         private readonly ISettingsProvider _settingsProvider;
         private readonly IStoryDatabaseLoader _storyDatabaseLoader;
         private List<string> _fonts;
         private TextInfoSettings _textSettings;
         public ICommand DownloadLocalDatabaseCommand { get; set; }
+        private CancellationTokenSource _cancellationTokenSource;
+
+        private string _downloadStatus;
+        private int _currentProgress;
+
 
         public SettingsViewModel(ISettingsProvider settingsProvider,IStoryDatabaseLoader storyDatabaseLoader) 
             : base("Настройки")
@@ -24,12 +30,12 @@ namespace ScaryStoriesUwp.Shared.ViewModels
             _textSettings = settingsProvider.TextSettings;
             CreateFontFamilyList();
             DownloadLocalDatabaseCommand=new MvxCommand(async ()=>await DownloadDatabase());
+            _cancellationTokenSource=new CancellationTokenSource();
         }
 
         private async Task DownloadDatabase()
         {
-           
-           var version=await _storyDatabaseLoader.DownloadNewDatabase();
+           var version=await _storyDatabaseLoader.DownloadNewDatabase(_cancellationTokenSource.Token,this);
             _settingsProvider.DatabaseVersion = version;
             _settingsProvider.IsOffline = true;
 
@@ -99,9 +105,44 @@ namespace ScaryStoriesUwp.Shared.ViewModels
             }
         }
 
+        public int CurrentProgress
+        {
+            get { return _currentProgress; }
+            set
+            {
+                _currentProgress = value;
+                base.RaisePropertyChanged(()=>CurrentProgress);
+            }
+        }
+
         private void Save()
         {
             _settingsProvider.TextSettings = _textSettings;
+        }
+
+        public void DownloadStatusChange(string status)
+        {
+          
+        }
+
+        public void DownloadProgressChange(int progress)
+        {
+            CurrentProgress = progress;
+        }
+
+        public void DownloadStart()
+        {
+         
+        }
+
+        public void DownloadFinish()
+        {
+          
+        }
+
+        public void DownloadErrorFinish()
+        {
+          
         }
     }
 }

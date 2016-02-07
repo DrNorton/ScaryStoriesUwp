@@ -13,6 +13,7 @@ namespace ScaryStoriesUwp.Shared.ViewModels.Base
         public LoadingScreen(string title)
         {
             _title = title;
+
         }
 
         protected void Wait(bool loading, string loadingText = "загрузка")

@@ -1,0 +1,8 @@
+MainPackage=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\bin\ARM\Release\Upload\ScaryStoriesUwp_2.1.1.0_ARM.appx
+SymbolPackage=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\AppPackages\ScaryStoriesUwp_2.1.1.0\ScaryStoriesUwp_2.1.1.0_ARM.appxsym
+ResourcePack=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\_language-en.appx
+ResourcePack=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\_language-ru.appx
+ResourcePack=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\_scale-100.appx
+ResourcePack=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\_scale-125.appx
+ResourcePack=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\_scale-150.appx
+ResourcePack=E:\Projects\ScaryStoriesUwp\ScaryStoriesUwp\_scale-400.appx

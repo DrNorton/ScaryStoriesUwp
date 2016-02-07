@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace ScaryStoriesUwp.Shared.Services
 {
     public interface IStoryDatabaseLoader
     {
-        Task<bool> IsDatabaseDownloaded();
-        Task<long> DownloadNewDatabase();
+        Task<long> DownloadNewDatabase(CancellationToken cancellationToken,IProgressDownloadReceiver receiver);
     }
 }

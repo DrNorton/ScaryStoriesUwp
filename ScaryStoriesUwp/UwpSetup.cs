@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Windows.UI.Xaml.Controls;
-
+using Microsoft.ApplicationInsights;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
@@ -40,6 +40,8 @@ namespace ScaryStoriesUwp
             Mvx.ConstructAndRegisterSingleton<ISpeechSyntizerService, SpeechSyntizerService>();
             Mvx.RegisterType<IStoryDatabaseLoader, StoryDatabaseLoader>();
             Mvx.RegisterSingleton(typeof(IGlobalProgressProvider),new GlobalProgressProvider());
+          
+            Mvx.RegisterType<TelemetryClient,TelemetryClient>();
         }
 
 
