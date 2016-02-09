@@ -12,6 +12,7 @@
 
     <views1:MvxWindowsPage.Resources>
         <converters:FontStringConverter x:Key="FontStringConverter"/>
+        <converters:BoolToVisilibityConverter x:Key="BoolToVisilibityConverter"/>
     </views1:MvxWindowsPage.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -20,19 +21,39 @@
            <RowDefinition/>
        </Grid.RowDefinitions>
         <StackPanel Padding="10">
-            <Button Command="{Binding DownloadLocalDatabaseCommand}" Content="Скачать локальную базу данных"/>
-            <Grid Margin="0,15,15,15">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+
+            <Grid Visibility="{Binding IsDatabaseDownload,Converter={StaticResource BoolToVisilibityConverter},ConverterParameter='reverse'}" >
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <FontIcon Margin="0,10,10,10" Grid.Column="0" Grid.RowSpan="2" Foreground="White" FontSize="50" Glyph="&#xE8F7;"/>
-                <ProgressBar Margin="3" Maximum="100" Minimum="0" Value="{Binding CurrentProgress,Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
-                <TextBlock Margin="3" Text="Статус" Foreground="White" Grid.Column="1" Grid.Row="0"/>
+                <Button Grid.Row="0" Command="{Binding DownloadLocalDatabaseCommand}" Content="Скачать локальную базу данных"/>
+                <Grid Grid.Row="1" Margin="0,15,15,15" Visibility="{Binding DownloadVisible,Converter={StaticResource BoolToVisilibityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <FontIcon Grid.Row="1" Margin="0,10,10,10" Grid.Column="0" Grid.RowSpan="2" Foreground="White" FontSize="50" Glyph="&#xE8F7;"/>
+                    <ProgressBar Margin="3" Maximum="100" Minimum="0" Value="{Binding CurrentProgress,Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Grid.Row="2" Margin="3" Text="{Binding DownloadStatus,Mode=TwoWay}" Foreground="White" Grid.Column="1"/>
+                </Grid>
+
+            </Grid>
+         
+            <Grid Visibility="{Binding IsDatabaseDownload,Converter={StaticResource BoolToVisilibityConverter}}">
+                <StackPanel>
+                    <Button Grid.Row="0" Command="{Binding CheckUpdateDatabaseCommand}" Content="Проверить обновления"/>
+                    <TextBlock Margin="5,10,0,0">
+                        <Run Text="Версия локальной базы:"/>
+                        <Run Text="{Binding DatabaseVersion,Mode=TwoWay}"/>
+                    </TextBlock>
+                </StackPanel>
             </Grid>
         </StackPanel>
      <StackPanel Margin="10" Grid.Row="1" >

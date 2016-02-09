@@ -16,10 +16,12 @@ namespace ScaryStoriesUwp.Shared.ViewModels
         private List<string> _fonts;
         private TextInfoSettings _textSettings;
         public ICommand DownloadLocalDatabaseCommand { get; set; }
+        public ICommand CheckUpdateDatabaseCommand { get; set; }
         private CancellationTokenSource _cancellationTokenSource;
-
+        private bool _downloadVisible = false;
         private string _downloadStatus;
         private int _currentProgress;
+      
 
 
         public SettingsViewModel(ISettingsProvider settingsProvider,IStoryDatabaseLoader storyDatabaseLoader) 
@@ -30,8 +32,12 @@ namespace ScaryStoriesUwp.Shared.ViewModels
             _textSettings = settingsProvider.TextSettings;
             CreateFontFamilyList();
             DownloadLocalDatabaseCommand=new MvxCommand(async ()=>await DownloadDatabase());
-            _cancellationTokenSource=new CancellationTokenSource();
+            CheckUpdateDatabaseCommand = new MvxCommand(async () => await DownloadDatabase());
+            _cancellationTokenSource =new CancellationTokenSource();
+            
         }
+
+
 
         private async Task DownloadDatabase()
         {
@@ -115,6 +121,36 @@ namespace ScaryStoriesUwp.Shared.ViewModels
             }
         }
 
+        public string DownloadStatus
+        {
+            get { return _downloadStatus; }
+            set
+            {
+                _downloadStatus = value;
+                base.RaisePropertyChanged(()=>DownloadStatus);
+            }
+        }
+
+        public bool DownloadVisible
+        {
+            get { return _downloadVisible; }
+            set
+            {
+                _downloadVisible = value;
+                base.RaisePropertyChanged(()=>DownloadVisible);
+            }
+        }
+
+        public bool IsDatabaseDownload
+        {
+            get { return _settingsProvider.DatabaseVersion != 0; }
+        }
+
+        public long DatabaseVersion
+        {
+            get { return _settingsProvider.DatabaseVersion; }
+        }
+
         private void Save()
         {
             _settingsProvider.TextSettings = _textSettings;
@@ -122,7 +158,7 @@ namespace ScaryStoriesUwp.Shared.ViewModels
 
         public void DownloadStatusChange(string status)
         {
-          
+            DownloadStatus = status;
         }
 
         public void DownloadProgressChange(int progress)
@@ -132,12 +168,14 @@ namespace ScaryStoriesUwp.Shared.ViewModels
 
         public void DownloadStart()
         {
-         
+            DownloadVisible = true;
         }
 
         public void DownloadFinish()
         {
-          
+            DownloadVisible = false;
+            base.RaisePropertyChanged(()=> DatabaseVersion);
+            base.RaisePropertyChanged(() => IsDatabaseDownload);
         }
 
         public void DownloadErrorFinish()

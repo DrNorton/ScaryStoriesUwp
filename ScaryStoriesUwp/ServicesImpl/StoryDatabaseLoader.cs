@@ -21,8 +21,9 @@ namespace ScaryStoriesUwp.ServicesImpl
         private readonly ISettingsProvider _settingsProvider;
         private readonly IMessageProvider _messageProvider;
         private BackgroundDownloader _backgroundDownloader;
-       private DownloadOperation downloadOperation;
+        private DownloadOperation downloadOperation;
         private IProgressDownloadReceiver _progressDownloadReceiver;
+       
 
 
         public StoryDatabaseLoader(IApiService apiService,ISettingsProvider settingsProvider,IMessageProvider messageProvider)
@@ -33,19 +34,35 @@ namespace ScaryStoriesUwp.ServicesImpl
             _backgroundDownloader = new BackgroundDownloader();
         }
 
+     
+
         public async Task<long> DownloadNewDatabase(CancellationToken cancellationToken, IProgressDownloadReceiver progressDownloadReceiver)
         {
             _progressDownloadReceiver = progressDownloadReceiver;
+            _progressDownloadReceiver.DownloadStatusChange("Проверяем обновления...");
             var updateResult=await _apiService.CheckDatabaseUpdate(_settingsProvider.DatabaseVersion);
             if (updateResult.ErrorCode != 0)
             {
-                await _messageProvider.ShowCustomOkMessageBox(updateResult.ErrorMessage, "Инфорация");
+                await _messageProvider.ShowCustomOkMessageBox(updateResult.ErrorMessage, "Информация");
                 return 0;
             }
             else
             {
                 var newDatabase=updateResult.Result;
-                Download(new Uri(newDatabase.PathToDatabase,UriKind.RelativeOrAbsolute),newDatabase.DbVersion.ToString(),cancellationToken);
+                var result=await _messageProvider.ShowCustomOkNoMessageBox(
+                    String.Format("Размер обновления: {0}мб", (int) newDatabase.Size/1000000), "Обновление базы данных");
+                if (result)
+                {
+                    _progressDownloadReceiver.DownloadStatusChange("Идёт загрузка..");
+                    Download(new Uri(newDatabase.PathToDatabase, UriKind.RelativeOrAbsolute), newDatabase.DbVersion.ToString(), cancellationToken);
+                }
+                else
+                {
+                    _progressDownloadReceiver.DownloadStatusChange("Загрузка отменена.");
+                    _progressDownloadReceiver.DownloadFinish();
+                    return 0;
+                }
+                
                 return newDatabase.DbVersion;
             }
         }
@@ -60,6 +77,7 @@ namespace ScaryStoriesUwp.ServicesImpl
             Progress<DownloadOperation> progress = new Progress<DownloadOperation>(ProgressChanged);
                 try
                 {
+                    _progressDownloadReceiver.DownloadStatusChange("Идёт загрузка..");
                     await downloadOperation.StartAsync().AsTask(cancellationToken, progress);
                 }
                 catch (TaskCanceledException)

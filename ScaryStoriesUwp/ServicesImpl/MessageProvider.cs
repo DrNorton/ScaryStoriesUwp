@@ -11,7 +11,7 @@ namespace ScaryStoriesUwp.ServicesImpl
         {
 
             var messageDialog = new MessageDialog(message);
-            messageDialog.Title = title;
+            messageDialog.Title = "Информация";
             messageDialog.Commands.Clear();
             messageDialog.Commands.Add(new UICommand() { Label = "Ок", Id = 0 });
             var result= await messageDialog.ShowAsync();
@@ -25,7 +25,7 @@ namespace ScaryStoriesUwp.ServicesImpl
             messageDialog.Title = title;
             messageDialog.Commands.Clear();
             messageDialog.Commands.Add(new UICommand() { Label = "Ок", Id = 0 });
-            messageDialog.Commands.Add(new UICommand() { Label = "Неа", Id = 1 });
+            messageDialog.Commands.Add(new UICommand() { Label = "Нет", Id = 1 });
             var result = await messageDialog.ShowAsync();
             return (int)result.Id == 0;
         }

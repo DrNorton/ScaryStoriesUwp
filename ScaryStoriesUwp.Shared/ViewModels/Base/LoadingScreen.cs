@@ -9,6 +9,7 @@ namespace ScaryStoriesUwp.Shared.ViewModels.Base
         private bool _isLoading;
         private string _loadingText;
         private string _title;
+        private string _downloadStatus;
 
         public LoadingScreen(string title)
         {
