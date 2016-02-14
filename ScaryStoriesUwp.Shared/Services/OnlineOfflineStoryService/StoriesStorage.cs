@@ -22,7 +22,7 @@ namespace ScaryStoriesUwp.Shared.Services.OnlineOfflineStoryService
 
         public Task<IEnumerable<Story>> GetStories(int limit, int offset)
         {
-            if (_settingsProvider.IsOffline)
+            if (!_settingsProvider.IsOnline)
             {
                 return _storiesLocalRepository.GetStories(limit, offset); 
             }

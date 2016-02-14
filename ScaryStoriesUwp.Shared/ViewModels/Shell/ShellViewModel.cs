@@ -68,28 +68,32 @@ namespace ScaryStoriesUwp.Shared.ViewModels.Shell
             get { return _bottomMenu; }
         }
 
-        public bool IsOffline
+        public bool IsOnline
         {
-            get { return !_settingsProvider.IsOffline; }
+            get { return _settingsProvider.IsOnline; }
             set
             {
-                SetOffline(value);
-                base.RaisePropertyChanged(()=>IsOffline);
+                SetOnline(value);
+                base.RaisePropertyChanged(()=>IsOnline);
             }
         }
 
-        private async void SetOffline(bool value)
+        private async void SetOnline(bool value)
         {
-            if (value == true)
+            if (value)
+            {
+                IsOnline = true;
+            }
+            else
             {
                 //Проверяем скачана ли база
                 if (_settingsProvider.DatabaseVersion != 0)
                 {
-                    _settingsProvider.IsOffline = true;
+                    IsOnline = false;
                 }
                 else
                 {
-                    var dialogResult=await
+                    var dialogResult = await
                         _messageProvider.ShowCustomOkNoMessageBox(
                             "Для включения оффлайн режима, нужно перейти в настройки и скачать локальную базу данных. Переходим?",
                             "Информация");
@@ -99,14 +103,11 @@ namespace ScaryStoriesUwp.Shared.ViewModels.Shell
                     }
                     else
                     {
-                        IsOffline = false;
+                        IsOnline = true;
                     }
 
                 }
-            }
-            else
-            {
-                _settingsProvider.IsOffline = false;
+                
             }
         }
 
@@ -140,14 +141,14 @@ namespace ScaryStoriesUwp.Shared.ViewModels.Shell
         {
             if (e.PropertyName == "IsOffline")
             {
-                base.RaisePropertyChanged(()=>IsOffline);
+                base.RaisePropertyChanged(()=>IsOnline);
             }
         }
 
         private void Online()
         {
             var provider = Mvx.Resolve<ISettingsProvider>();
-            provider.IsOffline = !provider.IsOffline;
+            provider.IsOnline = !provider.IsOnline;
         }
     }
 }

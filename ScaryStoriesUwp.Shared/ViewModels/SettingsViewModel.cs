@@ -42,8 +42,12 @@ namespace ScaryStoriesUwp.Shared.ViewModels
         private async Task DownloadDatabase()
         {
            var version=await _storyDatabaseLoader.DownloadNewDatabase(_cancellationTokenSource.Token,this);
-            _settingsProvider.DatabaseVersion = version;
-            _settingsProvider.IsOffline = true;
+            if (version != 0)
+            {
+                _settingsProvider.DatabaseVersion = version;
+                _settingsProvider.IsOnline = true;
+            }
+         
 
         }
 

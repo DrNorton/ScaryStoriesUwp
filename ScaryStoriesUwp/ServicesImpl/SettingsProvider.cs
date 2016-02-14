@@ -17,7 +17,7 @@ namespace ScaryStoriesUwp.ServicesImpl
             _roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
         }
 
-        public bool IsOffline
+        public bool IsOnline
         {
             get { return StorageHelper.GetCompositeSetting<bool>("IsOffline"); }
             set
